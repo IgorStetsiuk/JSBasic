@@ -1,5 +1,5 @@
 # IDE ignores
-
+.idea/
 .vscode/
 *.iml
 *.sublime*
