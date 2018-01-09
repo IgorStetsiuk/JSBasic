@@ -51,3 +51,50 @@ function commonValues(arr1, arr2) {
 }
 
 console.log(commonValues([3, 4, 6, 3, 1, 11, 1, 0], [0, 5, 10, 7, 1, 3, 9, 8, 7, 0]), 'common values - solution 2');
+
+
+/*
+3. Distinct values.
+    Write a function that returns the distinct values of two arrays.
+    Example:
+
+distinctValues([3, 4, 6, 3, 1], [5, 10, 7, 1, 3, 9, 8, 7]);     //  [4, 6, 5, 10, 7, 9, 8]*/
+
+
+function distinctValues(arr1, arr2) {
+    let result = [];
+
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr2.indexOf(arr1[i]) === -1 && !result.includes(arr1[i])) {
+            result.push(arr1[i]);
+        }
+    }
+
+    for (let i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) === -1 && !result.includes(arr2[i])) {
+            result.push(arr2[i]);
+        }
+    }
+
+    return result;
+
+}
+
+console.log(distinctValues([3, 4, 6, 3, 1], [5, 10, 7, 1, 3, 9, 8, 7]));
+
+
+function distinctValues(arr1, arr2) {
+
+    function getUnique(a, b) {
+        a = Array.from(new Set(a));
+        b = Array.from(new Set(b));
+
+        return a.filter(item => {return !b.includes(item)});
+
+    }
+
+    return [...getUnique(arr1, arr2), ...getUnique(arr2, arr1)];
+
+}
+
+console.log(distinctValues([3, 4, 6, 3, 1], [5, 10, 7, 1, 3, 9, 8, 7]));
