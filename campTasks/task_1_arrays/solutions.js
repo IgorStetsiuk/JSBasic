@@ -89,7 +89,9 @@ function distinctValues(arr1, arr2) {
         a = Array.from(new Set(a));
         b = Array.from(new Set(b));
 
-        return a.filter(item => {return !b.includes(item)});
+        return a.filter(item => {
+            return !b.includes(item)
+        });
 
     }
 
@@ -98,3 +100,42 @@ function distinctValues(arr1, arr2) {
 }
 
 console.log(distinctValues([3, 4, 6, 3, 1], [5, 10, 7, 1, 3, 9, 8, 7]));
+
+//
+// function distinctValues(arr1, arr2) {
+//     let concatArray = arr1.concat(arr2);
+//
+//     let result = [];
+//     for (let i = 0; i < concatArray.length; i++) {
+//         if (concatArray.indexOf(concatArray[i], concatArray.indexOf(concatArray[i]) + 1) === -1) {
+//             result.push(concatArray[i])
+//         }
+//     }
+//     return result;
+// }
+//
+// console.log(distinctValues([3, 4, 6, 3, 1], [5, 10, 7, 1, 3, 9, 8, 7]));
+
+
+/*4. Random.
+    Write a function which creates an array with defined size and fills it with random values
+
+function generateArr(arrSize) {...};*/
+
+
+function generateArr(arrSize) {
+    let randomArray = [];
+
+    for (let i = 0; i < arrSize; i++) {
+        randomArray.push(Math.floor(Math.random() * arrSize))
+    }
+    return randomArray;
+}
+
+console.log(generateArr(25), 'random array');
+
+function generateArr2(arrSize) {
+    return new Array(arrSize).fill(0).map(() => Math.floor(Math.random() * arrSize));
+}
+
+console.log(generateArr2(25), 'random array solution 2');
