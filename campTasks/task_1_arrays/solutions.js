@@ -139,3 +139,48 @@ function generateArr2(arrSize) {
 }
 
 console.log(generateArr2(25), 'random array solution 2');
+
+/*
+
+5. Includes.
+    Write your own implementation of Array.prototype.includes() method.*/
+
+function myOwnIncludes(element, fromIndex) {
+    let length = this.length;
+    let from = 0;
+
+    if (fromIndex && fromIndex > 0) {
+        from = fromIndex
+    } else if (fromIndex && fromIndex < 0) {
+        from = length + fromIndex;
+    }
+
+    for (let i = from; i < length; i++) {
+
+        if (this[i] !== this[i]) return true;
+
+        if (this[i] === element) return true;
+
+    }
+
+    return false;
+}
+
+/* Tests */
+
+console.log(myOwnIncludes.call([7, 15, 4, 0], 4, 3), 'expect false');
+console.log(myOwnIncludes.call([7, 15, 4, 0], 4, 2), 'expect true');
+console.log(myOwnIncludes.call([7, 15, 4, 0], 4), 'expect true');
+console.log(myOwnIncludes.call([7, 15, 4, 0], 0, -1), 'expect true');
+
+console.log(myOwnIncludes.call([null, undefined, [], NaN, 0], 0,), 'expect true , here NaN');
+
+Array.prototype.myOwnIncludes = myOwnIncludes;
+
+console.log(['cat', 'dog', 'bat'].myOwnIncludes('cat'), 'expect true --- ');
+
+console.log([1, 2, 3].myOwnIncludes(2));     // true
+console.log([1, 2, 3].myOwnIncludes(4));     // false
+console.log([1, 2, 3].myOwnIncludes(3, 3));  // false
+console.log([1, 2, 3].myOwnIncludes(3, -1)); // true
+console.log([1, 2, NaN].myOwnIncludes(NaN)); // true
