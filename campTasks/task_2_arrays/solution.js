@@ -8,17 +8,12 @@ Array.prototype.myFilter = function (callback, thisArg) {
     let result = [];
     let array = this;
 
-    let context = thisArg || this;
-
     for (let i = 0; i < array.length; i++) {
-        let currentItem = array[i];
+        let args = [array[i], i, array];
 
-        let args = [currentItem, i, context];
-
-        if (callback.apply(context, args)) {
-            result[result.length] = currentItem;
+        if (callback.apply(thisArg, args)) {
+            result[result.length] = array[i];
         }
-
     }
 
     return result;
