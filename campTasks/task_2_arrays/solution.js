@@ -90,3 +90,9 @@ function moveZeros2(arr) {
 }
 
 console.log(moveZeros2([7, 2, 3, 0, 4, 6, 0, 0, 13, 0, 78, 0, 0, 19, 14]));
+
+function moveZeros3(arr) {
+    return arr.filter(p => p !== 0).concat(arr.filter(p => p === 0));
+}
+
+console.log(moveZeros3([7, 2, 3, 0, 4, 6, 0, 0, 13, 0, 78, 0, 0, 19, 14]));
